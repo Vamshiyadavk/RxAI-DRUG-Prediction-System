@@ -48,6 +48,7 @@ pip install -r requirements.txt
 ### Run Application
 
 ```bash
+python RxAI-DRUG-Prediction-System-main\drug_prediction_model.ipynb
 python app.py
 ```
 
