@@ -48,7 +48,6 @@ pip install -r requirements.txt
 ### Run Application
 
 ```bash
-python RxAI-DRUG-Prediction-System-main\drug_prediction_model.ipynb
 python app.py
 ```
 
@@ -60,14 +59,18 @@ http://127.0.0.1:5000
 
 ## 📂 Project Structure
 
-```bash
+```text
 RxAI/
 │
-├── app.py
-├── drug_model.pkl
-├── requirements.txt
-├── index.html
-└── dataset/
+├── app.py                     # Flask web server & prediction API
+├── run.py                     # Convenience runner script
+├── train_model.py             # Script to train and export the ML model
+├── drug_dataset.csv           # Clinical dataset for model training
+├── drug_descriptions.json     # Drug classes, indications & details
+├── drug_model.pkl             # Pre-trained Random Forest model bundle
+├── drug_prediction_model.ipynb# Jupyter notebook for EDA & modeling
+├── index.html                 # Modern frontend UI
+└── requirements.txt           # Python dependencies
 ```
 
 ## 🎯 Project Objective

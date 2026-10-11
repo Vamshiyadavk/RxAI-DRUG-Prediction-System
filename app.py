@@ -8,14 +8,31 @@ RxAI — Flask Backend
 """
 
 from flask import Flask, request, jsonify, send_from_directory
-import joblib, numpy as np, os
+import joblib, numpy as np, os, sys
+
+# Ensure Windows console supports UTF-8
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 app = Flask(__name__)
 
-
 # ── Load model once at startup ────────────────────────────────
-BASE   = os.path.dirname(os.path.abspath(__file__))
-bundle = joblib.load(os.path.join(BASE, "drug_model.pkl"))
+BASE = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE, "drug_model.pkl")
+
+if not os.path.exists(model_path):
+    print("drug_model.pkl not found. Training model now...")
+    try:
+        import train_model
+        train_model.main()
+    except Exception as exc:
+        print(f"Error during training: {exc}")
+
+bundle = joblib.load(model_path)
 
 model       = bundle["model"]
 le_sex      = bundle["le_sex"]

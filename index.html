@@ -447,7 +447,7 @@ body {
 
 <script type="text/babel">
 const { useState, useEffect } = React;
-const API = window.location.origin;
+const API = (window.location.origin && window.location.origin !== "null") ? window.location.origin : "http://localhost:5000";
 
 /* ── Confidence Donut ──────────────────────────── */
 function Donut({ pct }) {
