@@ -63,7 +63,6 @@ http://127.0.0.1:5000
 RxAI/
 │
 ├── app.py                     # Flask web server & prediction API
-├── run.py                     # Convenience runner script
 ├── train_model.py             # Script to train and export the ML model
 ├── drug_dataset.csv           # Clinical dataset for model training
 ├── drug_descriptions.json     # Drug classes, indications & details
